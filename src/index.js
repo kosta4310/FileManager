@@ -1,5 +1,6 @@
 import { inputProcessing } from "./inputProcessing.js";
-import { currentDirectories } from "./inputProcessing.js";
+import os from 'node:os';
+const currentDirectories = os.homedir();
 
 const [argument] = process.argv.slice(2);
 let username;
@@ -8,7 +9,9 @@ if (argument) {
 } else username = 'Anonimus';
 
 console.log(`Welcome to the File Manager, ${username}!`);
+process.chdir(currentDirectories);
 console.log(`You are currently in ${currentDirectories}`);
+
 
 function  endOfProgramm() {
     console.log(`Thank you for using File Manager, ${username}, goodbye!`);
