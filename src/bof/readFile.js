@@ -1,5 +1,4 @@
-import {createReadStream, createWriteStream} from 'node:fs';
-import {pipeline} from 'node:stream';
+import {createReadStream} from 'node:fs';
 import { Write } from './Write.js';
 
 export async function readFile(path) {

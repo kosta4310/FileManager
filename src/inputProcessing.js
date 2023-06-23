@@ -7,6 +7,8 @@ import { createFile } from './bof/createFile.js';
 import { renameFile } from './bof/rename.js';
 import { copyFile } from './bof/copy.js';
 import { move } from './bof/move.js';
+import { deleteFile } from './bof/delete.js';
+import { osi } from './osi/osi.js';
 
 export async function inputProcessing(inputRow) {
     const [cmd, arg1, arg2] = inputRow.split(' ');
@@ -36,6 +38,16 @@ export async function inputProcessing(inputRow) {
             case 'add':
                 await createFile(arg1);
                 break;
+            case 'rm':
+                await deleteFile(arg1);
+                break;
+            case 'os':
+                try {
+                    osi(arg1);
+                } catch (error) {
+                    console.log('Operation failed');
+                }
+                break;   
             default:
                 console.log('Invalid input');
                 break;
