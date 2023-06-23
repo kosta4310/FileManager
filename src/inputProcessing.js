@@ -5,6 +5,8 @@ import { changeDirectory } from './nwd/changeDirectory.js';
 import { readFile } from './bof/readFile.js';
 import { createFile } from './bof/createFile.js';
 import { renameFile } from './bof/rename.js';
+import { copyFile } from './bof/copy.js';
+import { move } from './bof/move.js';
 
 export async function inputProcessing(inputRow) {
     const [cmd, arg1, arg2] = inputRow.split(' ');
@@ -42,6 +44,12 @@ export async function inputProcessing(inputRow) {
         switch (cmd) {
             case 'rn':
                 await renameFile(arg1, arg2);
+                break;
+            case 'cp':
+                await copyFile(arg1, arg2);
+                break;
+            case 'mv':
+                await move(arg1, arg2);
                 break;
         
             default:
