@@ -3,7 +3,7 @@ import os from 'node:os';
 export function osi(arg) {
     switch (arg) {
         case '--EOL':
-            console.log(os.EOL);
+            console.log(JSON.stringify(os.EOL));
             break;
         case '--cpus':
             console.log(os.cpus());

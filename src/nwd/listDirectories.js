@@ -5,7 +5,7 @@ export async function listDirectories(path) {
     const array = dirent.map(dirent => {
         return {
             Name: dirent.name,
-            Type: dirent.isFile() ? 'file' : 'directory'
+            Type: dirent.isFile() ? 'file' : dirent.isDirectory() ? 'directory' : 'unknown'
         }
     });
     array.sort(compare);

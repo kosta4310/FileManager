@@ -9,6 +9,7 @@ import { copyFile } from './bof/copy.js';
 import { move } from './bof/move.js';
 import { deleteFile } from './bof/delete.js';
 import { osi } from './osi/osi.js';
+import { getHash } from './hash.js';
 
 export async function inputProcessing(inputRow) {
     const [cmd, arg1, arg2] = inputRow.split(' ');
@@ -47,6 +48,9 @@ export async function inputProcessing(inputRow) {
                 } catch (error) {
                     console.log('Operation failed');
                 }
+                break;
+            case 'hash':
+                await getHash(arg1);
                 break;   
             default:
                 console.log('Invalid input');
