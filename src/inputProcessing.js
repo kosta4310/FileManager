@@ -10,6 +10,7 @@ import { move } from './bof/move.js';
 import { deleteFile } from './bof/delete.js';
 import { osi } from './osi/osi.js';
 import { getHash } from './hash.js';
+import { compress, decompress } from './cdo/compressAndDecompress.js';
 
 export async function inputProcessing(inputRow) {
     const [cmd, arg1, arg2] = inputRow.split(' ');
@@ -66,6 +67,12 @@ export async function inputProcessing(inputRow) {
                 break;
             case 'mv':
                 await move(arg1, arg2);
+                break;
+            case 'compress':
+                await compress(arg1, arg2);
+                break;
+            case 'decompress':
+                await decompress(arg1, arg2);
                 break;
         
             default:
