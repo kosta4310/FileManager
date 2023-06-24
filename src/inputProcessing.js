@@ -13,7 +13,7 @@ import { getHash } from './hash.js';
 import { compress, decompress } from './cdo/compressAndDecompress.js';
 
 export async function inputProcessing(inputRow) {
-    const [cmd, arg1, arg2] = inputRow.split(' ');
+    const [cmd, arg1, arg2, ...rest] = inputRow.split(' ');
     
     if (cmd && !arg1 && !arg2) {
         switch (cmd) {
@@ -57,7 +57,7 @@ export async function inputProcessing(inputRow) {
                 console.log('Invalid input');
                 break;
         }
-    } else if (cmd && arg1 && arg2) {
+    } else if (cmd && arg1 && arg2 && !rest.length) {
         switch (cmd) {
             case 'rn':
                 await renameFile(arg1, arg2);
